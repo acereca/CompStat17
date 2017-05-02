@@ -21,16 +21,16 @@ mon = c(mon[1:nsurvey,])
 paste('mean:',mean(mon))
 paste('std. dev:',sd(mon))
 
-pdf('01-1.pdf')
+png('01-1.png')
 hist(mat, breaks= 0:13)
 
 survey_hist = hist(mat)
-pdf('01-2.pdf')
+png('01-2.png')
 barplot(survey_hist$counts/sum(survey_hist$counts),
     main=paste('Histogram for',nsurvey, 'trials of', nppl, 'samples each'),
     xlab='month')
 
-pdf('01-3.pdf')
+png('01-3.png')
 hist(mon, breaks=0:30)
 
 
@@ -41,8 +41,8 @@ exactdata = 1-(365-ndata+1)**(ndata-1)/(365**(ndata-1))
 assumdata = 1-exp(-ndata*(ndata-1)/365/2)
 assumdata2 = 1-exp(-ndata**2/365/2)
 
-pdf('01-4.pdf')
-plot(ndata,exactdata, pch='.', cex=3)
-points(ndata,assumdata, pch='.', col=2, cex=3)
-points(ndata,assumdata2, pch='.', col=3, cex=3)
+png('01-4.png', width=1000, height=500)
+plot(ndata,exactdata, pch='o', cex=.5, xlab='N: number of ppl', ylab='P(two ppl have same bday)')
+points(ndata,assumdata, pch='o', col=2, cex=.5)
+points(ndata,assumdata2, pch='o', col=3, cex=.5)
 legend(1,1,c("exact","assumed exp.","assumed exp. 2"),col=c(1,2,3),pch=c('-','-','-'))
