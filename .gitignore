@@ -1,0 +1,17 @@
+# latex
+*.synctex.gz
+*.log
+*.aux
+*.fdb_latexmk
+*.fls
+
+
+# working
+self/
+.gtm/
+.idea/
+__pycache__/
+
+
+# animations
+#*.mp4
