@@ -28,4 +28,7 @@ for (i in nset){
     print(i)
 }
 png('ex2.png')
-plot(nset, means, xlab='n: width of exprimental area', ylab='average number of steps needed', pch=20, cex=1)
+plot(
+    nset, means, pch=20, cex=1,
+    xlab='n: width of exprimental area', ylab='average number of steps needed'
+)
