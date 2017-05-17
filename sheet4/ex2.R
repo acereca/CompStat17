@@ -27,6 +27,7 @@ for (i in nset){
     means[i] = mean(dist_rand_walk(i))
     print(i)
 }
+
 png('ex2.png')
 plot(
     nset, means, pch=20, cex=1,
