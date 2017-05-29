@@ -3,7 +3,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{a4wide}
-\usepackage{libertine}
+\usepackage{dejavu}
 \usepackage{graphicx}
 \usepackage{listings}
 \usepackage{xcolor}
@@ -28,15 +28,15 @@
         frame=l,
         xleftmargin=\parindent,
         basicstyle=\linespread{1.2}\footnotesize\ttfamily,
-        keywordstyle=\bfseries\color{blue},
+        keywordstyle=\bfseries\color{blue!50!black},
         commentstyle=\itshape\color{purple!40!black},
-        identifierstyle=\color{black},
+        identifierstyle=\color{teal!50!black},
         stringstyle=\color{red},
-        alsoletter={_}
+        alsoletter={_},
+        otherkeywords={!,!=,~,$,*,\&,\%/\%,\%*\%,\%\%,<-,<<-}
     }
 
-    \section{Generating Gaussian distributed random vari-
-        ables}
+    \section{Generating Gaussian distributed random variables}
         We are to create uniformly distributed points in a unit circle and show the values for $z_1$ and $z_2$ are gaussian distributed
         
         \lstinputlisting{ex1.R}
