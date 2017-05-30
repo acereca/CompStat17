@@ -1,0 +1,38 @@
+\documentclass[11pt, a4paper, reqno]{scrartcl}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{a4wide}
+\usepackage{dejavu}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage{microtype}
+
+% for latex output of pandas
+\usepackage{booktabs}
+
+\lstset{
+	language=R,
+	backgroundcolor=\color{gray!5},
+	numbers=left,
+	captionpos=t,
+	breaklines=true,
+	frame=l,
+	xleftmargin=\parindent,
+	basicstyle=\linespread{1.2}\footnotesize\ttfamily,
+	keywordstyle=\bfseries\color{blue!50!black},
+	commentstyle=\itshape\color{purple!40!black},
+	identifierstyle=\color{teal!50!black},
+	stringstyle=\color{red},
+	alsoletter={_},
+	otherkeywords={!,!=,~,$,*,\&,\%/\%,\%*\%,\%\%,<-,<<-}
+}
+
+\begin{document}
+	\input{p2.tex}
+	\input{p3.tex}
+
+\end{document}

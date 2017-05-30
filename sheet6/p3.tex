@@ -1,0 +1,17 @@
+% !TeX root = sheet6_solution.tex
+\section{Higher order moments of multivariate Gaussian}
+\begin{align}
+	E[x_1\cdot x_2\cdot\dots x_{2n}] = \sum_1^{\binom{2n}{2}}\left( \prod_{1}^{n} E[x_ix_j] \right)
+\end{align}
+
+\subsection{a)}
+\begin{align}
+	E[x_1^4x_2^2]=&\binom{3}{1}_{perm} 2^0_{rot} E[x_1^2]^2 E[x_2^2]\\
+	+&\binom{3}{1}_{perm} 2^2_{rot} E[x_1^2] E[x_1x_2]^2\\
+	=&3\sigma_1^4\sigma_2^2 + 12(\varrho_{12}\sigma_1\sigma_2)^2\sigma_1^2\\
+\end{align}
+\subsection{b)}
+\begin{align}
+	E[x_1^3x_2]=&\binom{4}{2}E[x_1^2]E[x_1x_2]\\
+	=&6\sigma_1^2(\varrho_{12}\sigma_1\sigma_2)
+\end{align}
