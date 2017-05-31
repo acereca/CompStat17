@@ -28,10 +28,43 @@
 	identifierstyle=\color{teal!50!black},
 	stringstyle=\color{red},
 	alsoletter={_},
-	otherkeywords={!,!=,~,$,*,\&,\%/\%,\%*\%,\%\%,<-,<<-}
+	otherkeywords={!,!=,~,*,\&,\%/\%,\%*\%,\%\%,<-,<<- }
 }
 
 \begin{document}
+    \title{Computational Statistics and Data Analysis\\Sheet No. 6}
+    \author{David Bubeck, Patrick Nisbl\`e}
+    \maketitle
+    \section{Correlated Variables}
+    \begin{align}
+        \bar V_1 = 6.991867\\
+        \bar V_2 = 9.009960
+    \end{align}
+    We calculated the following two matrices:
+    \begin{align}
+        \text{covariance matrix }C_{ij} = \begin{pmatrix}
+            5.045109 & 1.508497\\
+            1.508497 & 1.492933
+        \end{pmatrix}\\
+        \text{correlation matrix }C_{ij} = \begin{pmatrix}
+            1.0000000 & 0.5496535\\
+            0.5496535 & 1.0000000
+        \end{pmatrix}
+    \end{align}
+    
+    using following code:
+    \begin{figure}[H]
+        \lstinputlisting[lastline=46]{Exercise06_1.r}
+    \end{figure}
+    \begin{figure}
+        \lstinputlisting[firstline=48]{Exercise06_1.r}
+    \end{figure}
+
+    resulting in:
+    \begin{figure}[H]
+        \includegraphics[height=0.4\paperheight]{dataPlot.png}
+        \includegraphics[height=0.4\paperheight]{ellipsesPlot.png}
+    \end{figure}
 	\input{p2.tex}
 	\input{p3.tex}
 
