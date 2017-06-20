@@ -1,4 +1,4 @@
-ntests = 1000
+<ntests = 1000
 
 # part 1
 scatter_prb <- function(theta, g){
