@@ -37,6 +37,7 @@ S <- function(n, OmegaM, OmegaL) {
 logLikelihood <- function(theta) {
     OmegaM <- theta[1]
     OmegaL <- theta[2]
+    print(theta)
     return(-1/2 * (S(2, OmegaM, OmegaL) - S(1, OmegaM, OmegaL)^2 / S(0, OmegaM, OmegaL)))
 }
 
@@ -45,41 +46,35 @@ logLflat <- function(Om) {
     logLikelihood(c(Om, 1 - Om))
 }
 
-#step in omega m steping from 0 to 0.5
+library('tidyverse')
 dxvect <- 0.005
-xvect <- seq(0, .5, by = dxvect) #definition omega m vector
+data = tibble(
+    x = seq(0, .5, by = dxvect),
+    y = sapply(x, logLflat),
+    trueLH = exp(y - max(y)),
+    normL = dxvect * sum(trueLH))
 
-#computation of the tru log likelihood for vector omega m
-yvect <- sapply(xvect, logLflat)
+g = ggplot(data, aes(x = x, y= trueLH/normL)) + geom_point()
+ggsave('plot1.png')
 
-#exterminate max position of the log logLikelihood
-maxPos <- which.max(yvect)
-OmBF <- xvect[maxPos] #omega m best fit
+lh = function(Om, Ol) {
+    logLikelihood(c(Om, Ol))
+}
 
-#relative likelihood vector
-yvecDif <- yvect - yvect[maxPos]
-
-#true likelihood
-LikD <- exp(yvecDif)
-
-#normalization factor of likelihood (integrate over omega m)
-normL <- dxvect * sum(LikD)
-meanL <- dxvect * sum(xvect * LikD) / normL
-print(meanL)
-
-varL <- dxvect * sum((xvect - meanL)^2 * LikD) / normL
-sigmaL <- varL * 1.5
-
-png('figure.png')
-plot(xvect, LikD / normL, xlab = "Omega M", ylab = "Likelihood", type = "l")
-
-#fisher matrix
-library(numDeriv)
-Fisher <- -hessian(logLflat, OmBF) #equation 8
-#likelihood predicted by fisher matrix
-lines(xvect, dnorm(xvect, mean = OmBF, sd = Fisher^-.5), type = "l", lwd = 1.5, col = "red")
-#gaussian likelihood using the statistic of true likelihood
-lines(xvect, dnorm(xvect, mean = meanL, sd = sigmaL), type = "l", lwd = 1.5, col = "blue")
-
-print(sigmaL)
-print(Fisher^-.5)
+N = 100
+xdata = c()
+ydata = c()
+for (i in 1:N) {
+    for (j in 1:N) {
+        xdata = c(xdata, i/N)
+        ydata = c(ydata, j/N)
+    }
+}
+data2 = tibble(
+    x = xdata,
+    y = ydata,
+    z = lh(xdata, ydata)
+    )
+data2
+g = ggplot(data2, aes(x = x, y= y, color=z)) + geom_point()
+ggsave('plot2.png')

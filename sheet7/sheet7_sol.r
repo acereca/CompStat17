@@ -39,7 +39,10 @@ flat = function(Om){
     log_lh(c(Om, 1-Om))
 }
 
+lh = function(Om, Ol){
+}
+
 data2 = tibble(x = seq(0,.5,.005), y=flat(x))
-g = ggplot(data2, aes(x=x, y=y))
+g = ggplot(data2, aes(x=x, y=y)) + geom
 
 ggsave('plot.png)
