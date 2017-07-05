@@ -11,7 +11,7 @@ self/
 .gtm/
 .idea/
 __pycache__/
-
+_minted*/
 
 # animations
 #*.mp4
