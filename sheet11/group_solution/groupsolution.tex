@@ -1,0 +1,28 @@
+\documentclass[]{scrartcl}
+\title{Group Solution - Sheet 11}
+
+\begin{document}
+  \maketitle
+  \section*{MCMC - Markov Chain Monte Carlo}
+    \begin{itemize}
+      \item Complex Distributions, Multidimensional Grid of Parameters
+      \item $f(\sigma^{(i)}| \sigma^{(i-1)})$
+      \item Independece of initial conditions
+    \end{itemize}
+
+  \section*{Problem 1 - MCMC implementation for baryon acoustic oscillations}
+    \subsection{Theory}
+      \begin{enumerate}
+        \item at t=0, initial condition
+        \item generate a Vector of initial Parameters $\Theta^{(i)}$
+        \item REPEAT:
+          \begin{enumerate}
+            \item t++
+            \item generate a proposal $\Theta^*$ from $f(\sigma^{(T+1)}| \sigma^{(T)})$
+            \item estimate $\alpha=min\{ 1, f(\Theta^*) \}$
+            \item $u = unif(0,1)$
+            \item if $u < \alpha$ accept the new proposal
+          \end{enumerate}
+          %\[f (\Theta )\approx \frac{e^{-\chi^2(\Theta^*)/2}}{e^{-\chi^2(\Theta^*)/2}}\]
+      \end{enumerate}
+\end{document}
