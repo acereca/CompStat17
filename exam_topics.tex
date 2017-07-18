@@ -1,0 +1,109 @@
+\documentclass[]{scrartcl}
+
+\usepackage{amsmath}
+    \title{Exam CompStat: 26.7.17 16:00}
+\begin{document}
+
+    \maketitle
+
+    \begin{itemize}
+      \item $y_i$, $\hat{y}$ RV
+      \item $< y > = \mu_y$ not random $\rightarrow$ Prior
+    \end{itemize}
+
+    \subsection{Basic Properties of random Variables}
+
+      \begin{itemize}
+        \item Transitional, cond.prob., joint prob. margin
+        \[
+          int(p(x,y),y)=f(x)
+        \]
+        \item law of error propagation
+        \begin{align*}
+          sig^2_y = sig^2_x*(dy/dx)^2\\
+          P(x|y) = P(x,y)/P(y)
+        \end{align*}
+      \end{itemize}
+
+    \subsection{Distributions}\label{distributions}
+
+    \begin{itemize}
+    \item uniform, binomial, poissonian, (multivariate-) gaussian, $\chi^2$, exponential
+      \begin{align*}
+        f(x) > 0\\
+        \int f(x) d x = 1
+      \end{align*}
+    \item PDF
+      \[ f(x)dx\]
+    \item CDF
+      \[ int(f(x), x, -Inf, y) = g(y)\]
+    \item MGF
+      \[
+        < e^{tx} > = \int e^{tx} f(x) dx
+      \]
+    \item moments
+      \begin{align*}
+        \int x^m f(x) dx\\
+        \int (x-\alpha)^m f(x) dx
+      \end{align*}
+    \end{itemize}
+
+    \subsection{Bayes Theorem}\label{bayes-theorem}
+
+    \begin{itemize}
+    \item
+      \textless{}\textgreater{}
+
+      P(d, t)
+
+      G(x, mu) = exp(-.5*(x-mu)\textsuperscript{2/sig}2)
+
+      P(D\textbar{}T) = P(D,T)/P(T)
+
+      P(T\textbar{}D) = P(D,T)/P(D)
+    \item
+      frequentist
+
+      P(D,T) = \ldots{}
+
+      d\_i, d\_hat = sum(di, i)/N = f of data
+
+      \textless{} d\_hat \textgreater{} = mu
+
+      -\textgreater{} PDF(theta\_hat) (PDF of estimator)
+    \item
+      Bayes
+
+      P(T\textbar{}D) = P(D\textbar{}T) * P(T)/P(D)
+
+      E(D) = int(L(D\textbar{}T)* pi(T), T)
+
+      B\_(AB) = E\_A(D)/E\_B(D)
+    \end{itemize}
+
+    \subsection{Fisher Estimation}\label{fisher-estimation}
+
+    \begin{verbatim}
+    F_(α, β) = (dell^2 log(L))/(dell  θ_α * dell θ_β) @ maxL = (..)
+    \end{verbatim}
+
+    \begin{itemize}
+    \item
+      we assume gaussian distr. params. around the peak for a found maximum
+      likelihood estimator
+
+      exp(-.5\emph{(x\_i-μ\_i)} C\_(i,j)\^{}(-1)* (x\_j-μ\_j))
+    \end{itemize}
+
+    \subsection{fitting}\label{fitting}
+
+    \begin{verbatim}
+    t = f(x) = A_0 + A_1 * f_1(x) + A_2 * f_2(x)
+
+    exp(-.5* sum((d_i-t_i)^2/σ_i^2))
+    -> C_(i,j)
+
+    A |_ maxL =G^-1 D, F_(\alpha, \beta) = G
+    \end{verbatim}
+
+\end{document}
