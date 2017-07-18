@@ -1,6 +1,7 @@
-\documentclass[]{scrartcl}
+\documentclass[twocolumn, a4paper, 11pt]{scrartcl}
 
-\usepackage{amsmath}
+\usepackage{amsmath, amssymb}
+\usepackage[left=1.50cm, right=0.50cm, top=0.50cm, bottom=3cm]{geometry}
     \title{Exam CompStat: 26.7.17 16:00}
 \begin{document}
 
@@ -11,99 +12,92 @@
       \item $< y > = \mu_y$ not random $\rightarrow$ Prior
     \end{itemize}
 
-    \subsection{Basic Properties of random Variables}
+    \section{Basic Properties of random Variables}
 
       \begin{itemize}
         \item Transitional, cond.prob., joint prob. margin
         \[
-          int(p(x,y),y)=f(x)
+          \int p(x,y) dy = f(x)
         \]
         \item law of error propagation
         \begin{align*}
-          sig^2_y = sig^2_x*(dy/dx)^2\\
+          \sigma^2_y = \sigma^2_x*(dy/dx)^2\\
           P(x|y) = P(x,y)/P(y)
         \end{align*}
       \end{itemize}
 
-    \subsection{Distributions}\label{distributions}
+    \section{Distributions}\label{distributions}
 
     \begin{itemize}
-    \item uniform, binomial, poissonian, (multivariate-) gaussian, $\chi^2$, exponential
-      \begin{align*}
-        f(x) > 0\\
-        \int f(x) d x = 1
-      \end{align*}
-    \item PDF
-      \[ f(x)dx\]
-    \item CDF
-      \[ int(f(x), x, -Inf, y) = g(y)\]
-    \item MGF
-      \[
-        < e^{tx} > = \int e^{tx} f(x) dx
-      \]
-    \item moments
-      \begin{align*}
-        \int x^m f(x) dx\\
-        \int (x-\alpha)^m f(x) dx
-      \end{align*}
+      \item uniform, binomial, poissonian, (multivariate-) gaussian, $\chi^2$, exponential
+        \begin{align*}
+          f(x) > 0\\
+          \int f(x) d x = 1
+        \end{align*}
+      \item PDF
+        \[ f(x)dx\]
+      \item CDF
+        \[ int(f(x), x, -Inf, y) = g(y)\]
+      \item MGF
+        \[
+          < e^{tx} > = \int e^{tx} f(x) dx
+        \]
+      \item moments
+        \begin{align*}
+          \int x^m f(x) dx\\
+          \int (x-\alpha)^m f(x) dx
+        \end{align*}
     \end{itemize}
 
-    \subsection{Bayes Theorem}\label{bayes-theorem}
+    \section{Bayes Theorem}\label{bayes-theorem}
 
     \begin{itemize}
-    \item
-      \textless{}\textgreater{}
+    \item hi
+      \begin{align*}
+        P(d, t)\\
+        G(x, \mu) = e^{-\frac 1 2 \frac{(x-\mu)^2}{\sigma^2}}\\
+        P(D|T) = P(D,T)/P(T)\\
+        P(T|D) = P(D,T)/P(D)
+      \end{align*}
+    \item frequentists approach
+      \begin{align*}
+        P(D,T) = \ldots\\
+        d_i, \hat d = \sum_i \frac{d_i}{N} = f\text{ of data}\\
+        < \hat d > = \mu\\
+        \rightarrow\ \text{PDF}(\hat \theta)\text{ (PDF of estimator)}
+      \end{align*}
 
-      P(d, t)
+    \item Bayes Theorem
+      \begin{align*}
+        P(T|D) = P(D|T) \frac{P(T)}{P(D)}\\
+        E(D) = \int L(D|T) \pi(T) dT\\
+        B_{a,b} = \frac{E_a(D)}{E_b(D)}
+      \end{align*}
 
-      G(x, mu) = exp(-.5*(x-mu)\textsuperscript{2/sig}2)
-
-      P(D\textbar{}T) = P(D,T)/P(T)
-
-      P(T\textbar{}D) = P(D,T)/P(D)
-    \item
-      frequentist
-
-      P(D,T) = \ldots{}
-
-      d\_i, d\_hat = sum(di, i)/N = f of data
-
-      \textless{} d\_hat \textgreater{} = mu
-
-      -\textgreater{} PDF(theta\_hat) (PDF of estimator)
-    \item
-      Bayes
-
-      P(T\textbar{}D) = P(D\textbar{}T) * P(T)/P(D)
-
-      E(D) = int(L(D\textbar{}T)* pi(T), T)
-
-      B\_(AB) = E\_A(D)/E\_B(D)
     \end{itemize}
 
-    \subsection{Fisher Estimation}\label{fisher-estimation}
+    \section{Fisher Estimation}
 
-    \begin{verbatim}
-    F_(α, β) = (dell^2 log(L))/(dell  θ_α * dell θ_β) @ maxL = (..)
-    \end{verbatim}
+    \begin{align*}
+      F_{\alpha, \beta} = \left. \frac{\partial^2 log(L)}{\partial  \theta_\alpha \partial \theta_\beta} \right|_{L_{max}}
+    \end{align*}
 
     \begin{itemize}
     \item
-      we assume gaussian distr. params. around the peak for a found maximum
+      we assume gaussian distributed parameters around the peak for a found maximum
       likelihood estimator
-
-      exp(-.5\emph{(x\_i-μ\_i)} C\_(i,j)\^{}(-1)* (x\_j-μ\_j))
+      \[
+        e^{-\frac 12 (x_i-\mu_i)  C_{i,j}^{-1} (x_j-\mu_j)}
+      \]
     \end{itemize}
 
-    \subsection{fitting}\label{fitting}
+    \section{fitting}\label{fitting}
 
-    \begin{verbatim}
-    t = f(x) = A_0 + A_1 * f_1(x) + A_2 * f_2(x)
-
-    exp(-.5* sum((d_i-t_i)^2/σ_i^2))
-    -> C_(i,j)
-
-    A |_ maxL =G^-1 D, F_(\alpha, \beta) = G
-    \end{verbatim}
+    \begin{align*}
+      t = f(x) = A_0 + A_1  f_1(x) + A_2  f_2(x)\\
+      e^{-\frac12 \sum_i \frac{(d_i-t_i)^2}{\sigma_i^2} }
+      \Rightarrow C_{i,j}\\
+      A |_{L_{max}} = G^{-1} D, F_{\alpha, \beta} = G
+    \end{align*}
 
 \end{document}
